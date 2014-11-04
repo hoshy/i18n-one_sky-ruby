@@ -23,7 +23,7 @@ module I18n
           else
             yaml = platform.translation.download_yaml(locale_code)
             YAML.load(yaml).each do |code, translations|
-              active_record_backend.store_translations(i18n_locale_code, translations)
+              active_record_backend.store_translations(i18n_locale_code, translations) if translations
               puts "  locale: #{i18n_locale_code}, count: #{translation_scope(i18n_locale_code).count}"
             end
           end
